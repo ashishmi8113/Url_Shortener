@@ -2,6 +2,7 @@ package com.example.URL_Shortener.service;
 
 import com.example.URL_Shortener.entity.UrlData;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -35,23 +36,28 @@ public class UrlServiceImpl implements UrlService {
         if (!isValidUrl(longUrl)) {
             throw new RuntimeException("Invalid URL. Must start with http:// or https://");
         }
-        String shortUrl="";
-        if(customCode!=null && !customCode.equals("")){
-            shortUrl=customCode;
-        }
-        else{
-            shortUrl=generateCode();
+
+        String shortUrl;
+        if (customCode != null && !customCode.isEmpty()) {
+            shortUrl = customCode;
+        } else {
+            shortUrl = generateCode();
         }
 
-        // Collision Check, if new generated url already exists in MAP, then generate again, until we get the unique one.
-        while(map.containsKey(shortUrl)){
-            shortUrl=generateCode();
+        while (map.containsKey(shortUrl)) {
+            shortUrl = generateCode();
         }
 
-        LocalDateTime expiryTime=LocalDateTime.now().plusMinutes(expiryMinutes);
-        map.put(shortUrl,new UrlData(longUrl,expiryTime));
-        return "http://localhost:8080/url/"+ shortUrl;
+        LocalDateTime expiryTime = LocalDateTime.now().plusMinutes(expiryMinutes);
+        map.put(shortUrl, new UrlData(longUrl, expiryTime));
+
+        String host = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .build()
+                .toUriString();
+
+        return host + "/" + shortUrl;
     }
+
     @Override
     public String getOriginalUrl(String url) {
         UrlData urlData=map.get(url);
