@@ -55,7 +55,7 @@ public class UrlServiceImpl implements UrlService {
                 .build()
                 .toUriString();
 
-        return host + "/" + shortUrl;
+        return host + "/url/" + shortUrl;
     }
 
     @Override
