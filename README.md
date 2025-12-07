@@ -5,7 +5,7 @@ A simple and fast backend application that converts long URLs into short shareab
 🚀 REST API Endpoints
 
 🔹 Create Short URL
-POST /url/shorten?url=<longUrl>&expiry=<minutes>&custom=<optionalCode>
+POST /url/shorten?url=<longUrl>&custom=<optionalCode>&expiry=<minutes>
 
 🔹 Redirect to Original URL
 GET /url/{shortCode}
