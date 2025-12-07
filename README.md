@@ -3,6 +3,7 @@
 A simple and fast backend application that converts long URLs into short shareable URLs.
 
 🚀 REST API Endpoints
+
 🔹 Create Short URL
     POST /url/shorten?url=<longUrl>&expiry=<minutes>&custom=<optionalCode>
 
@@ -21,6 +22,7 @@ A simple and fast backend application that converts long URLs into short shareab
 - Fast in-memory storage using ConcurrentHashMap
 - Deployed on Railway (Free Tier)
 
+
 ---
 
 ## 🛠️ Tech Stack
@@ -31,13 +33,8 @@ A simple and fast backend application that converts long URLs into short shareab
 | Cloud Hosting | Railway |
 | Storage | ConcurrentHashMap (In-memory) |
 
+
 ---
-
-## 📡 API Usage
-
-### 🔹 Shorten URL
-**POST** request:/url/shorten?url=<longUrl>&custom=<ownURL(optionsl)>&expiry=<minutes>
-
 
 | Parameter | Required | Description |
 |----------|----------|-------------|
@@ -46,13 +43,17 @@ A simple and fast backend application that converts long URLs into short shareab
 | custom | ❌ | Your custom short code |
 
 Example:
+
 https://urlshortener-production-6317.up.railway.app/url/shorten?url=https://leetcode.com/accounts/login/?next=%2Fproblems%2Fcount-partitions-with-max-min-difference-at-most-k%2Fdescription%2F%3FenvType%3Ddaily-question%26envId%3D2025-12-06&custom=leetcodeLogin&expiry=10
 
 Example Response:
-http://urlshortener-production-6317.up.railway.app/url/leetcodeLogin  (valid for 10 minutes, as we mentioned the expiry time)
+
+http://urlshortener-production-6317.up.railway.app/url/leetcodeLogin  
+(valid for 10 minutes, as we mentioned the expiry time)
 
 
 ## 📸 Screenshots
+
 ### 🔹 Shorten URL API (Postman)
 ![Shorten API](screenshots/shorten-request.png)
 
@@ -63,10 +64,13 @@ http://urlshortener-production-6317.up.railway.app/url/leetcodeLogin  (valid for
 ---
 
 ### 🔹 Redirect to Original URL  
+
 Just open the shortened URL in browser: https://urlshortener-production-6317.up.railway.app/url/myYoutube
 
-
 ➡ Automatically redirects to the original long URL
+
+
+
 ---
 
 ## 🧪 Testing Options
