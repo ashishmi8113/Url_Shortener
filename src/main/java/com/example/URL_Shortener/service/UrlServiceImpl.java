@@ -32,7 +32,7 @@ public class UrlServiceImpl implements UrlService {
     }
 
     @Override
-    public String createShortUrl(String longUrl, String customCode, int expiryMinutes) {
+    public String createShortUrl(String longUrl, String customCode) {
         if (!isValidUrl(longUrl)) {
             throw new RuntimeException("Invalid URL. Must start with http:// or https://");
         }
@@ -48,7 +48,7 @@ public class UrlServiceImpl implements UrlService {
             shortUrl = generateCode();
         }
 
-        LocalDateTime expiryTime = LocalDateTime.now().plusMinutes(expiryMinutes);
+        LocalDateTime expiryTime = LocalDateTime.now().plusMinutes(10);
         map.put(shortUrl, new UrlData(longUrl, expiryTime));
 
         String host = ServletUriComponentsBuilder.fromCurrentContextPath()

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface UrlService {
-    String createShortUrl(String longUrl, String customCode, int expiryMinutes);
+    String createShortUrl(String longUrl, String customCode);
     String getOriginalUrl(String url);
     String displayAllUrl();
     String deleteUrl(String url);

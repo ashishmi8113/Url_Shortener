@@ -5,7 +5,7 @@ A simple and fast backend application that converts long URLs into short shareab
 🚀 REST API Endpoints
 
 🔹 Create Short URL
-POST /url/shorten?url=<longUrl>&custom=<optionalCode>&expiry=<minutes>
+POST /url/shorten?url=<longUrl>&custom=<optionalCode>
 
 🔹 Redirect to Original URL
 GET /url/{shortCode}
@@ -39,17 +39,16 @@ GET /url/{shortCode}
 | Parameter | Required | Description |
 |----------|----------|-------------|
 | url | ✔ | Full URL to shorten (must start with http/https) |
-| expiry | ✔ | Expiry time in minutes |
 | custom | ❌ | Your custom short code |
 
 Example:
 
-https://urlshortener-production-6317.up.railway.app/url/shorten?url=https://leetcode.com/accounts/login/?next=%2Fproblems%2Fcount-partitions-with-max-min-difference-at-most-k%2Fdescription%2F%3FenvType%3Ddaily-question%26envId%3D2025-12-06&custom=leetcodeLogin&expiry=10
+https://urlshortener-production-6317.up.railway.app/url/shorten?url=https://leetcode.com/accounts/login/?next=%2Fproblems%2Fcount-partitions-with-max-min-difference-at-most-k%2Fdescription%2F%3FenvType%3Ddaily-question%26envId%3D2025-12-06&custom=leetcode-login
 
 Example Response:
 
-http://urlshortener-production-6317.up.railway.app/url/leetcodeLogin  
-(valid for 10 minutes, as we mentioned the expiry time)
+http://urlshortener-production-6317.up.railway.app/url/leetcode-login  
+(By default it Will be valid for 10 minutes)
 
 
 

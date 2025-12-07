@@ -21,7 +21,7 @@ public class UrlController {
             @RequestParam(required = false) String custom,
             @RequestParam(defaultValue = "10") int expiry) {
 
-        String shortUrl = urlService.createShortUrl(url, custom, expiry);
+        String shortUrl = urlService.createShortUrl(url, custom);
         return ResponseEntity.status(HttpStatus.CREATED).body(shortUrl);
     }
 
