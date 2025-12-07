@@ -78,7 +78,7 @@ Example(Postman)
 ### 🔹 Shorten URL API (Postman)
 ![Shorten API](screenshots/shorten-request.png)
 
-### 🔹 Redirect Test (Browser)
+### 🔹 Redirect URL (Paste it in Browser)
 ![Redirect Test](screenshots/redirect-test.png)
 
 
@@ -96,4 +96,4 @@ Example(Postman)
 
 ## 👤 Author
 **Ashish Mishra**  
-B.Tech IT – Backend Developer  
+B.Tech IT – Software Engineer  
