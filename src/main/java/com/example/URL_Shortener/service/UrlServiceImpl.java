@@ -73,4 +73,41 @@ public class UrlServiceImpl implements UrlService {
 
         return urlData.getLongUrl();
     }
+
+    @Override
+    public String displayAllUrl() {
+        if (map.isEmpty()) return "No URLs stored.";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Stored URLs:\n");
+
+        map.forEach((key, data) -> {
+            sb.append("{ ")
+                    .append(key)
+                    .append(" : ")
+                    .append(data.toString())
+                    .append(" }")
+                    .append("\n");
+        });
+        return sb.toString();
+    }
+
+
+    @Override
+    public String deleteUrl(String url) {
+        UrlData removed = map.get(url);
+        if (removed != null) {
+            map.remove(url);
+            return "Deleted: {" + url + " : " + removed.toString() + "}";
+        }
+        return "URL not found!";
+    }
+
+
+    @Override
+    public void deleteAllUrl() {
+        map.clear();
+    }
+
+
 }

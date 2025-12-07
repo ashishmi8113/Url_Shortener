@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/url")
@@ -31,5 +32,21 @@ public class UrlController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.status(HttpStatus.FOUND).location(URI.create(originalUrl)).build();
+    }
+
+    @PostMapping("/getAllUrl")
+    public ResponseEntity<String> getAllUrl() {
+        return ResponseEntity.status(HttpStatus.OK).body(urlService.displayAllUrl());
+    }
+
+    @PostMapping("/delete/{url}")
+    public ResponseEntity<String> deleteUrl(@PathVariable String url) {
+        return ResponseEntity.status(HttpStatus.OK).body(urlService.deleteUrl(url));
+    }
+
+    @PostMapping("/deleteAll")
+    public ResponseEntity<Void> deleteAllUrl() {
+        urlService.deleteAllUrl();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
